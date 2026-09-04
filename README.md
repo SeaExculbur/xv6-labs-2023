@@ -8,7 +8,6 @@
 
 - 代码仅供学习参考，**禁止用于任何课程的作业提交或抄袭**
 - xv6 本身由 MIT 以 MIT License 开源，本仓库代码基于 MIT 官方 lab 框架（来源镜像：[eecsmap/xv6-labs-2023](https://github.com/eecsmap/xv6-labs-2023)）修改而来
-- 如果你正在学习相关课程，请独立完成作业——实验的价值在于自己踩坑的过程
 
 ## 课程信息
 
