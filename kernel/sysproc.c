@@ -84,6 +84,9 @@ sys_pgaccess(void)
   if(npages < 0 || npages > 32)
     return -1;
 
+  if(start % PGSIZE != 0)
+    return -1;
+
   struct proc *p = myproc();
   uint32 mask = 0;
 
