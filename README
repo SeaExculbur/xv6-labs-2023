@@ -1,3 +1,27 @@
+# xv6-labs-2023
+
+> MIT 6.S081 / 6.1810 操作系统实验个人学习记录（RISC-V 版 xv6）
+
+## Lab 进度
+
+| Lab | 分支 | 完成日期 | 内容 | make grade |
+|---|---|---|---|---|
+| Lab 1: util | `util` | 2026-09-06 | sleep / pingpong / primes / find / xargs | — |
+| Lab 2: syscall | `syscall` | 2026-11-05 | trace / sysinfo | 40/40 |
+| Lab 3: pgtbl | `pgtbl` | 2026-11-14 | ugetpid / vmprint / pgaccess | 46/46 |
+
+后续 lab 完成后会继续更新这张表。
+
+## 实验环境
+
+- Ubuntu 24.04（WSL2）
+- riscv64-linux-gnu 工具链 + QEMU riscv64
+- 本机 binutils 2.42 会把用户程序链接成单个 RWX 段，导致代码页可写；用户程序链接时加 `-z separate-code`，让代码段为 R-X、数据段为 RW。
+
+---
+
+## 原始 README
+
 xv6 is a re-implementation of Dennis Ritchie's and Ken Thompson's Unix
 Version 6 (v6).  xv6 loosely follows the structure and style of v6,
 but is implemented for a modern RISC-V multiprocessor using ANSI C.
