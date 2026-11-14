@@ -16,29 +16,38 @@
 
 ## 实验进度
 
-| Lab | 状态 | 说明 |
-|-----|------|------|
-| Lab 1: Xv6 and Unix utilities | 🚧 进行中 | sleep ✅ / pingpong ✅ / primes / find / xargs 待做 |
+| Lab | 分支 | 状态 | 完成日期 | 内容 | make grade |
+|---|---|---|---|---|---|
+| Lab 1: Xv6 and Unix utilities | `util` | ✅ 完成 | 2026-09-06 | sleep / pingpong / primes / find / xargs | — |
+| Lab 2: System calls | `syscall` | ✅ 完成 | 2026-11-05 | trace / sysinfo | 40/40 |
+| Lab 3: Page tables | `pgtbl` | ✅ 完成 | 2026-11-14 | ugetpid / vmprint / pgaccess | 46/46 |
+| Lab 4: Traps | `traps` | 🚧 进行中 | — | RISC-V assembly / backtrace / alarm | — |
+
+每个 lab 在独立分支上实现；`util` 是默认分支，只维护这份 README 和实验进度。
 
 ## 环境
 
 - Windows 11 + WSL2 (Ubuntu 24.04)
 - 交叉编译：gcc-riscv64-linux-gnu / binutils-riscv64-linux-gnu
 - 模拟器：qemu-system-misc
+- 本机 binutils 2.42 会把用户程序链接成单个 RWX 段，导致代码页可写；用户程序链接时加 `-z separate-code`，让代码段为 R-X、数据段为 RW。
 
 ## 目录结构
 
-```
-user/   # 用户程序（实验作业都写在这里）
-kernel/ # xv6 内核源码
-Makefile# 构建规则（UPROGS 登记新程序）
+```text
+user/    # 用户程序（实验作业代码）
+kernel/  # xv6 内核源码
+Makefile # 构建规则（UPROGS 登记新程序）
 ```
 
-个人实验代码：`user/sleep.c`（sleep 系统调用练习）、`user/pingpong.c`（管道练习）
+## 个人实验代码
+
+- Lab 1：`user/sleep.c`、`user/pingpong.c`、`user/primes.c`、`user/find.c`、`user/xargs.c`
+- Lab 2 / Lab 3：内核改动位于各自的 `syscall`、`pgtbl` 分支
 
 ## 使用方法
 
 ```bash
-make qemu    # 编译并启动 xv6
-./grade-lab-util xxx   # 运行单个 lab 的评分测试
+make TOOLPREFIX=riscv64-linux-gnu- qemu    # 编译并启动 xv6
+make TOOLPREFIX=riscv64-linux-gnu- grade   # 运行当前 lab 的评分测试
 ```
