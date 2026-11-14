@@ -146,7 +146,7 @@ ULIB += $U/statistics.o
 endif
 
 _%: %.o $(ULIB)
-	$(LD) $(LDFLAGS) -T $U/user.ld -o $@ $^
+	$(LD) $(LDFLAGS) -z separate-code -T $U/user.ld -o $@ $^
 	$(OBJDUMP) -S $@ > $*.asm
 	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
 
